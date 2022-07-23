@@ -93,6 +93,7 @@ const routes: Routes = [
         path: 'instructions/:qid',
         component: InstructionsComponent,
       },
+     
     ],
   },
   {

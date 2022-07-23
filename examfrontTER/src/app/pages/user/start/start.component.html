@@ -1,1 +1,98 @@
-<h1>Welcome to start component</h1>
+<div class="bootstrap-wrapper" *ngIf="isSubmit == 0">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-2">
+        <!-- instructions -->
+        </div>
+        <div class="col-md-8">
+        <!-- questions -->
+    <ng-container *ngIf="questions">
+        <mat-card>
+            <h1 class="mt20">Quiz : {{questions[0].quiz.title}}</h1>            
+        </mat-card>
+    <br>
+    </ng-container>    
+    
+    <mat-card *ngFor="let q of questions; let i=index" class="mt10">
+        <mat-card-content>
+      <p>   Q{{i+1}}) <span [innerHTML]="q.content"></span>        </p>
+            <mat-divider>
+            </mat-divider>
+        
+        <div class="row mt20">
+            <div class="col-md-6">
+                <input type="radio"
+                [value]="q.option1"[name]="i" 
+                [(ngModel)]="q.givenAnswer"
+                />{{q.option1}}
+            </div>
+            <div class="col-md-6">
+                <input type="radio"
+                [value]="q.option2"[name]="i" 
+                [(ngModel)]="q.givenAnswer"
+                />{{q.option2}}
+            </div>
+        </div>
+        
+        <div class="row mt20">
+            <div class="col-md-6">
+                <input type="radio"
+                [value]="q.option3"[name]="i"
+                [(ngModel)]="q.givenAnswer"
+                />{{q.option3}}
+            </div>
+            <div class="col-md-6">
+                <input type="radio"
+                [value]="q.option4"[name]="i" 
+                [(ngModel)]="q.givenAnswer"
+                />{{q.option4}}
+            </div>
+        </div>
+        </mat-card-content>
+        
+    </mat-card>
+<div class="container text-center mt20 mb20">
+    <button (click)="submitQuiz()" mat-raised-button color="primary" >Submit Quiz</button>
+</div>
+
+
+    </div>
+
+        <div class="col-md-2">
+            <!-- progress -->
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+<!-- show the results -->
+
+<div class="bootstrap-wrapper" *ngIf="isSubmit==1">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        Quiz Result
+                </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="text-center">
+                    <h1>Marks Got :{{marksGot}}</h1>
+                    <h1>QuestionsAttempted :{{attempted}}</h1>
+
+                </mat-card-content>
+        <mat-card-actions class="text-center">
+            
+             <button mat-raised-button color="accent">Print</button>
+             <button mat-raised-button [routerLink]="'/user-dashboard/0'" color="primary">Home</button>
+
+            </mat-card-actions>
+
+            </mat-card>
+
+
+        </div>
+    </div>
+</div>
