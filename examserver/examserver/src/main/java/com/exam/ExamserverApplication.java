@@ -40,17 +40,12 @@ public class ExamserverApplication implements CommandLineRunner {
     public QuizRepository quizRepository;
 
     public static void main(String[] args) {
-
-
         SpringApplication.run(ExamserverApplication.class, args);
-
-
     }
 
     @Override
     public void run(String... args) throws Exception {
 //        try {
-
 
             System.out.println("starting code");
 //
@@ -82,8 +77,6 @@ public class ExamserverApplication implements CommandLineRunner {
 //
 //        } catch (UserFoundException e) {
 //            e.printStackTrace();
-//
-//
 //        }
 
 

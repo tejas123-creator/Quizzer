@@ -20,7 +20,7 @@ import { StartComponent } from './pages/user/start/start.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './services/admin.guard';
 import { NormalGuard } from './services/normal.guard';
-
+import { SidebarComponent as UserSidebar } from './pages/user/sidebar/sidebar.component';
 const routes: Routes = [
   {
     path: '',
