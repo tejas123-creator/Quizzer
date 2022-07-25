@@ -18,7 +18,7 @@ marksGot=0;
 
 correctAnswer=0;
 attempted=0;
-
+timer:any;
 isSubmit=0;
 
 
@@ -38,10 +38,13 @@ loadQuestions(){
   this._question.getQuestionsOfQuizForTest(this.qid).subscribe(
     (data:any)=>{
     this.questions=data;
-
+this.timer=this.questions.length*60;
     this.questions.forEach((q) => {
       q['givenAnswer']='';
     });
+
+
+    this.startTimer();
     console.log(this.questions);
     },
     (error)=>{
@@ -70,31 +73,51 @@ loadQuestions(){
     }).then((result) => {
       this.isSubmit=1;
       if (result.isConfirmed) {
-        Swal.fire(
-          'Quiz Submmited!',
-          '',
-          'success'
-        )
-        this.questions.forEach(g=>{
-          if(g.givenAnswer==g.answer){
-            this.correctAnswer++;
-          let marksSingle=  this.questions[0].quiz.maxMarks/this.questions.length
-        this.marksGot+=marksSingle;  
-        }
-        if(g.givenAnswer.trim()!=''){
-          this.attempted++;
-        }
-
-        }) 
-        console.log("Correct Answers :"+this.correctAnswer);
-        console.log("Marks :"+this.marksGot);
-       console.log( this.questions);
-       console.log(this.attempted);
+        this.evalQuiz();
       }
     
     })
   
   }
 
+  startTimer(){
+    let tt=window.setInterval(()=>{
+      if(this.timer<=0){
+        this.evalQuiz();
+      clearInterval(tt);
+      }else{
+        this.timer--;
+      }
+
+    },1000)
+  }
+getFormattedTimer(){
+  let mm=Math.floor(this.timer/60)
+  let ss=this.timer-mm*60;
+  return `${mm} min :${ss} sec`
+}
+
+evalQuiz(){
+  Swal.fire(
+    'Quiz Submmited!',
+    '',
+    'success'
+  )
+  this.questions.forEach(g=>{
+    if(g.givenAnswer==g.answer){
+      this.correctAnswer++;
+    let marksSingle=  this.questions[0].quiz.maxMarks/this.questions.length
+  this.marksGot+=marksSingle;  
+  }
+  if(g.givenAnswer.trim()!=''){
+    this.attempted++;
+  }
+
+  }) 
+  console.log("Correct Answers :"+this.correctAnswer);
+  console.log("Marks :"+this.marksGot);
+ console.log( this.questions);
+ console.log(this.attempted);
+}
 
 }

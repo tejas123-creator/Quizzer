@@ -60,6 +60,21 @@
 
         <div class="col-md-2">
             <!-- progress -->
+        <mat-card style="margin-top: 115px">
+            <mat-card-header>
+                <mat-card-title>Progress</mat-card-title>
+                <mat-card-subtitle>
+                    Quiz will get submitted when Timmer reaches to 00:00.
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <h1 class="text-center">{{getFormattedTimer()}}</h1>
+            <mat-spinner 
+            mode="determinate"
+            [value]="(timer/(this.questions.length*60))*100"
+            style="margin:auto"></mat-spinner>
+            </mat-card-content>
+        </mat-card>
         </div>
     </div>
     </div>
