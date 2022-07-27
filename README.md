@@ -6,6 +6,7 @@
 
 
 A project that uses Spring boot as a backend service,Angular Framework for frontend,Mysql as a database.
+Database is hosted on http://15.207.33.82:8080/user/test
 
   
   
