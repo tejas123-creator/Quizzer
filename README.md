@@ -1,5 +1,5 @@
 # Quizzer
-This is Quizzer web application using springboot,mysql and angular
+ Quizzer web application using springboot,mysql and angular
 
 # Description:
 
