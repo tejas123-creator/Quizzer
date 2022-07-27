@@ -4,7 +4,7 @@
 # Description:
 
 
-A project that uses Spring boot as a backend service,Angular Framework for frontend,Mysql uses jwt authentication.
+A project that uses Spring boot as a backend service,Angular Framework for frontend,Mysql as a database.
 
   
   
